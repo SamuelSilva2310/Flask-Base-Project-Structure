@@ -6,14 +6,24 @@ app, databases ...
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from app.config import Config 
+
+db = SQLAlchemy() #Initialize database
 
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = "INSERT SECRET KEY HERE"
-app.config['SQLALCHEMY_DATABASE_URI'] = "INSERT DATABSE URI HERE"
-db = SQLAlchemy(app) #Initialize database
+def create_app(config_class=Config):
+	app = Flask(__name__)
+	app.config.from_object(Config)
 
 
-# Import Routes
-from app import routes 
+	db.init_app(app)
 
+
+	# Import Blueprints
+	from app.users.routes import users # import the blueprint instance
+
+
+	# Register blueoprints to our app 
+	app.register_blueprint(users)
+
+	return app

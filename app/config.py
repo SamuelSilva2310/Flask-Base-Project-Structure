@@ -1,0 +1,5 @@
+"""All configuration values"""
+
+class Config:
+	SECRET_KEY = "INSERT SECRET KEY HERE"
+	SQLALCHEMY_DATABASE_URI = "INSERT DATABSE URI HERE"

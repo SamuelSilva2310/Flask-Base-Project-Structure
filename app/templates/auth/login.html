@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> A simple Form Example</h1>
+
+<form>
+	{{form.username.label(class="form-label")}}
+	{{form.username(class="form-control")}}
+
+
+	{{form.password.label(class="form-label")}}
+	{{form.password(class="form-control")}}
+
+	{{form.remember.label(class="form-check-label")}}
+	{{form.remember(class="form-check-input")}}
+
+	{{form.submit(class="btn btn-primary")}}
+</form>
+
+{% endblock %}
